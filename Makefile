@@ -26,6 +26,7 @@ ${NAME} : ${OBJS}
 
 bonus : ${OBJS_B}
 	${AR} ${NAME} ${OBJS_B}
+	
 %.o: %.c
 	${CC} ${CFLAGS} -c $< -o $@
 
