@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dbislimi <dbislimi@student.42nice.fr>      #+#  +:+       +#+        */
+/*   By: dren <dren@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024-04-22 11:14:10 by dbislimi          #+#    #+#             */
-/*   Updated: 2024-04-22 11:14:10 by dbislimi         ###   ########.fr       */
+/*   Created: 2024/04/22 11:14:10 by dbislimi          #+#    #+#             */
+/*   Updated: 2024/05/01 16:04:48 by dren             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*joined;
-	size_t	s1len;
-	size_t	s2len;
+	size_t	i;
+	size_t	j;
 
 	if (!s1 && !s2)
 		return (ft_strdup(""));
@@ -24,16 +24,19 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (ft_strdup(s2));
 	if (s2 == NULL)
 		return (ft_strdup(s1));
-	s1len = ft_strlen(s1);
-	s2len = ft_strlen(s2);
-	joined = (char *)malloc(sizeof(char) * (s1len + s2len + 1));
+	i = 0;
+	j = 0;
+	joined = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!joined)
 		return (0);
 	*joined = 0;
 	if (!joined)
 		return (NULL);
-	ft_strlcat(joined, s1, s1len + 1);
-	ft_strlcat(joined, s2, s1len + s2len + 1);
+	while (s1[i++])
+		joined[i - 1] = s1[i - 1];
+	while (s2[j])
+		joined[i++ - 1] = s2[j++];
+	joined[i - 1] = 0;
 	return (joined);
 }
 /*
